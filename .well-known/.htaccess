@@ -1,4 +1,7 @@
 RewriteEngine On
+# Redirect security to security.txt
+RewriteRule ^security$ security.txt [R=301,L]
+
 
 # Redirect host-meta requests
 RewriteRule ^\.well-known/host-meta$ https://social.jaredzimmerman.com/.well-known/host-meta [R=301,L]
