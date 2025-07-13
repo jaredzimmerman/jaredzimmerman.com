@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Redirect host-meta requests
+RewriteRule ^\.well-known/host-meta$ https://social.jaredzimmerman.com/.well-known/host-meta [R=301,L]
+
+# Redirect WebFinger requests for jaredzimmerman@jaredzimmerman.com to jaredzimmerman@social.jaredzimmerman.com
+RewriteCond %{QUERY_STRING} ^resource=acct:jaredzimmerman@jaredzimmerman\.com$
+RewriteRule ^\.well-known/webfinger$ https://social.jaredzimmerman.com/.well-known/webfinger?resource=acct:jaredzimmerman@social.jaredzimmerman.com [R=301,L]
+
+# Handle WebFinger requests for jaredzimmerman@social.jaredzimmerman.com
+RewriteCond %{QUERY_STRING} ^resource=acct:jaredzimmerman@social.jaredzimmerman\.com$
+RewriteRule ^\.well-known/webfinger$ https://social.jaredzimmerman.com/.well-known/webfinger?resource=acct:jaredzimmerman@social.jaredzimmerman.com [R=301,L]
