@@ -3,6 +3,11 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\.jaredzimmerman\.com$ [NC]
 RewriteRule ^ https://www.jaredzimmerman.com%{REQUEST_URI} [L,R=301]
 
+RewriteRule ^about/?$ https://www.jaredzimmerman.com/#about [L,R=301]
+RewriteRule ^clients/?$ https://www.jaredzimmerman.com/#clients [L,R=301]
+RewriteRule ^contact/?$ https://www.jaredzimmerman.com/#contact [L,R=301]
+RewriteRule ^elsewhere/?$ https://www.jaredzimmerman.com/#elsewhere [L,R=301]
+
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
   <FilesMatch "\.(jpg|jpeg|png|gif|js|css|svg|woff|woff2|ttf|eot|ico)$">
