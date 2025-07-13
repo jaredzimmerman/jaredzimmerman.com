@@ -1,17 +1,18 @@
-var currentTab = "#about";
+let currentTab = "#about";
 
 function switchWidth() {
-  var windowWidth = $(window).width();
+  const windowWidth = $(window).width();
+  const $current = $(currentTab);
   if (windowWidth <= 767) {
     $(".tabContents .tabData").hide();
     $(".tabContents .data .heading").removeClass("active");
     $("#tabs .data").show();
-    $(currentTab).find(".heading").addClass("active");
-    $(currentTab).find(".tabData").show();
+    $current.find(".heading").addClass("active");
+    $current.find(".tabData").show();
   } else {
     $("#tabs .data").hide();
     $(".Tlinks").closest(".tablinks").find("li").removeClass("active").attr("aria-selected", "false");
-    var sid = $(currentTab).attr("sid");
+    const sid = $current.attr("sid");
     $("#" + sid).addClass("active").attr("aria-selected", "true");
     $("#tabs " + currentTab).show();
   }
@@ -21,31 +22,42 @@ $(document).on("click", ".data .heading", function (e) {
   e.preventDefault();
   if (!$(this).hasClass("active")) {
     currentTab = "#" + $(this).closest(".data").attr("id");
+    const $current = $(currentTab);
     $(".tabContents .tabData").hide();
     $(".tabContents .data .heading").removeClass("active");
-    $(this).closest(".data").find(".heading").addClass("active");
-    $(this).closest(".data").find(".tabData").fadeIn();
+    $current.find(".heading").addClass("active");
+    $current.find(".tabData").fadeIn();
   }
 });
 
 $(document).on("click", ".Tlinks", function () {
-  $(this).closest(".tablinks").find("li").removeClass("active").attr("aria-selected", "false");
+  const $linksContainer = $(this).closest(".tablinks");
+  $linksContainer.find("li").removeClass("active").attr("aria-selected", "false");
   $(this).addClass("active").attr("aria-selected", "true");
-  var tabID = $(this).attr("id");
+  const tabID = $(this).attr("id");
   $("#tabs .data").hide();
-  $('section[sid="' + tabID + '"]').fadeIn();
-  currentTab = "#" + $('section[sid="' + tabID + '"]').attr("id");
+  const $section = $('section[sid="' + tabID + '"]');
+  $section.fadeIn();
+  currentTab = "#" + $section.attr("id");
   $(".tabContents .tabData").fadeIn();
 });
+
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
 
 $(document).ready(function () {
   switchWidth();
   $(".fade").fadeIn("slow");
-  var link_location = window.location.hash;
+  const link_location = window.location.hash;
   if (link_location !== "") {
     currentTab = link_location;
-    $('a[href="' + currentTab + '"]').click();
+    $('a[href="' + currentTab + '"]').trigger("click");
   }
-  $(window).resize(switchWidth);
+  $(window).on("resize", debounce(switchWidth, 100));
 });
 
