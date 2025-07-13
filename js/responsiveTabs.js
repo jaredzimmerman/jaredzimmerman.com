@@ -1,45 +1,68 @@
 let currentTab = "#about";
 
 function switchWidth() {
-  const windowWidth = $(window).width();
-  const $current = $(currentTab);
+  const windowWidth = window.innerWidth;
+  const current = document.querySelector(currentTab);
+  if (!current) return;
   if (windowWidth <= 767) {
-    $(".tabContents .tabData").hide();
-    $(".tabContents .data .heading").removeClass("active");
-    $("#tabs .data").show();
-    $current.find(".heading").addClass("active");
-    $current.find(".tabData").show();
+    document.querySelectorAll('.tabContents .tabData').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.tabContents .data .heading').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('#tabs .data').forEach(el => el.style.display = '');
+    const heading = current.querySelector('.heading');
+    const data = current.querySelector('.tabData');
+    if (heading) heading.classList.add('active');
+    if (data) data.style.display = '';
   } else {
-    $("#tabs .data").hide();
-    $(".Tlinks").closest(".tablinks").find("li").removeClass("active").attr("aria-selected", "false");
-    const sid = $current.attr("sid");
-    $("#" + sid).addClass("active").attr("aria-selected", "true");
-    $("#tabs " + currentTab).show();
+    document.querySelectorAll('#tabs .data').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.tablinks li').forEach(li => {
+      li.classList.remove('active');
+      li.setAttribute('aria-selected', 'false');
+    });
+    const sid = current.getAttribute('sid');
+    const link = document.getElementById(sid);
+    if (link) {
+      link.classList.add('active');
+      link.setAttribute('aria-selected', 'true');
+    }
+    const section = document.querySelector(`#tabs ${currentTab}`);
+    if (section) section.style.display = '';
   }
 }
 
-$(document).on("click", ".data .heading", function (e) {
-  e.preventDefault();
-  if (!$(this).hasClass("active")) {
-    currentTab = "#" + $(this).closest(".data").attr("id");
-    const $current = $(currentTab);
-    $(".tabContents .tabData").hide();
-    $(".tabContents .data .heading").removeClass("active");
-    $current.find(".heading").addClass("active");
-    $current.find(".tabData").fadeIn();
+document.addEventListener('click', function (e) {
+  if (e.target.closest('.data .heading')) {
+    const heading = e.target.closest('.data .heading');
+    e.preventDefault();
+    if (!heading.classList.contains('active')) {
+      currentTab = '#' + heading.closest('.data').id;
+      const current = document.querySelector(currentTab);
+      document.querySelectorAll('.tabContents .tabData').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.tabContents .data .heading').forEach(el => el.classList.remove('active'));
+      const h = current.querySelector('.heading');
+      const d = current.querySelector('.tabData');
+      if (h) h.classList.add('active');
+      if (d) d.style.display = '';
+    }
+  } else if (e.target.closest('.Tlinks')) {
+    const target = e.target.closest('.Tlinks');
+    const container = target.closest('.tablinks');
+    container.querySelectorAll('li').forEach(li => {
+      li.classList.remove('active');
+      li.setAttribute('aria-selected', 'false');
+    });
+    target.classList.add('active');
+    target.setAttribute('aria-selected', 'true');
+    const tabID = target.id;
+    document.querySelectorAll('#tabs .data').forEach(section => {
+      section.style.display = 'none';
+    });
+    const section = document.querySelector(`section[sid="${tabID}"]`);
+    if (section) {
+      section.style.display = '';
+      currentTab = '#' + section.id;
+    }
+    document.querySelectorAll('.tabContents .tabData').forEach(el => el.style.display = '');
   }
-});
-
-$(document).on("click", ".Tlinks", function () {
-  const $linksContainer = $(this).closest(".tablinks");
-  $linksContainer.find("li").removeClass("active").attr("aria-selected", "false");
-  $(this).addClass("active").attr("aria-selected", "true");
-  const tabID = $(this).attr("id");
-  $("#tabs .data").hide();
-  const $section = $('section[sid="' + tabID + '"]');
-  $section.fadeIn();
-  currentTab = "#" + $section.attr("id");
-  $(".tabContents .tabData").fadeIn();
 });
 
 function debounce(func, wait) {
@@ -50,14 +73,14 @@ function debounce(func, wait) {
   };
 }
 
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
   switchWidth();
-  $(".fade").fadeIn("slow");
-  const link_location = window.location.hash;
-  if (link_location !== "") {
-    currentTab = link_location;
-    $('a[href="' + currentTab + '"]').trigger("click");
+  document.querySelectorAll('.fade').forEach(el => el.classList.add('visible'));
+  const linkLocation = window.location.hash;
+  if (linkLocation !== '') {
+    currentTab = linkLocation;
+    const anchor = document.querySelector(`a[href="${currentTab}"]`);
+    if (anchor) anchor.click();
   }
-  $(window).on("resize", debounce(switchWidth, 100));
+  window.addEventListener('resize', debounce(switchWidth, 100));
 });
-
