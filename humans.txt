@@ -1,0 +1,8 @@
+/* TEAM */
+Developer: Jared Zimmerman
+Site: https://www.jaredzimmerman.com
+Twitter: @JaredZimmerman
+
+/* SITE */
+Standards: HTML5, CSS3, RSS
+Software: Handcrafted

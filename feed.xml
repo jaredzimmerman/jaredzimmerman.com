@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Jared Zimmerman</title>
+    <link>https://www.jaredzimmerman.com/</link>
+    <description>Updates from Jared Zimmerman</description>
+    <language>en-us</language>
+    <item>
+      <title>Home</title>
+      <link>https://www.jaredzimmerman.com/</link>
+      <guid>https://www.jaredzimmerman.com/</guid>
+      <pubDate>Tue, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <description>Homepage of Jared Zimmerman</description>
+    </item>
+  </channel>
+</rss>
