@@ -33,8 +33,8 @@ $(document).on("click", ".Tlinks", function () {
   $(this).addClass("active").attr("aria-selected", "true");
   var tabID = $(this).attr("id");
   $("#tabs .data").hide();
-  $('div[sid="' + tabID + '"]').fadeIn();
-  currentTab = "#" + $('div[sid="' + tabID + '"]').attr("id");
+  $('section[sid="' + tabID + '"]').fadeIn();
+  currentTab = "#" + $('section[sid="' + tabID + '"]').attr("id");
   $(".tabContents .tabData").fadeIn();
 });
 
