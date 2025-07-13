@@ -62,7 +62,8 @@ img {
 body {
   background: #eee;
   font-size: var(--small-font);
-  text-wrap: balance;
+  text-wrap: pretty;
+  text-rendering: optimizeLegibility;
 }
 
 .mainWrapper,
