@@ -1,0 +1,65 @@
+{
+  "subject": "acct:jaredzimmerman@social.jaredzimmerman.com",
+  "aliases": [
+    "https://social.jaredzimmerman.com/users/jaredzimmerman",
+    "https://jaredzimmerman.com/users/jaredzimmerman",
+    "https://jaredzimmerman.medium.com",
+    "https://medium.com/jaredzimmerman",
+    "https://linkedin.com/in/jaredzimmerman",
+    "https://jaredzimmerman.com/@jaredzimmerman",
+    "https://instagram.com/jaredzimmerman",
+    "https://twitter.com/JaredZimmerman",
+    "https://quora.com/Jared-Zimmerman",
+    "https://pinterest.com/jaredzimmerman",
+    "https://google.com/search?kgmid=/g/11dzfgx_k2"
+  ],
+  "properties": {
+    "http://schema.org/name": "Jared Zimmerman",
+    "http://schema.org/description": "Award-winning product design leader, educator, and speaker",
+    "http://schema.org/url": "https://www.jaredzimmerman.com",
+    "http://schema.org/sameAs": [
+      "https://linkedin.com/in/jaredzimmerman",
+      "https://instagram.com/jaredzimmerman",
+      "https://twitter.com/JaredZimmerman"
+    ]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://social.jaredzimmerman.com/users/jaredzimmerman"
+    },
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://social.jaredzimmerman.com/@jaredzimmerman"
+    },
+    {
+      "rel": "http://schemas.google.com/g/2010#updates-from",
+      "type": "application/atom+xml",
+      "href": "https://social.jaredzimmerman.com/users/jaredzimmerman.atom"
+    },
+    {
+      "rel": "http://webfinger.net/rel/avatar",
+      "type": "image/png",
+      "href": "https://www.jaredzimmerman.com/hotlink-ok/avatar_square.png"
+    },
+    {
+      "rel": "http://webfinger.net/rel/homepage",
+      "type": "text/html",
+      "href": "https://www.jaredzimmerman.com"
+    },
+    {
+      "rel": "me",
+      "href": "https://www.linkedin.com/in/jaredzimmerman"
+    },
+    {
+      "rel": "me",
+      "href": "https://twitter.com/JaredZimmerman"
+    },
+    {
+      "rel": "me",
+      "href": "https://instagram.com/jaredzimmerman"
+    }
+  ]
+}
