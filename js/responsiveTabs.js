@@ -17,10 +17,6 @@ function switchWidth() {
   }
 }
 
-$(document).on("click", ".contactme", function () {
-  $("#l3").click();
-});
-
 $(document).on("click", ".data .heading", function (e) {
   e.preventDefault();
   if (!$(this).hasClass("active")) {
