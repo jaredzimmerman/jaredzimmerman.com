@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>JaredZimmerman</ShortName>
+  <Description>Search JaredZimmerman.com</Description>
+  <Tags>search</Tags>
+  <Image height="16" width="16" type="image/png">https://www.jaredzimmerman.com/apple-touch-icon.png</Image>
+  <Url type="text/html" method="get" template="https://www.google.com/search?q=site:jaredzimmerman.com+{searchTerms}"/>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+</OpenSearchDescription>
