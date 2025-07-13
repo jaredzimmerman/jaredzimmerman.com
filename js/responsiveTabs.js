@@ -10,9 +10,9 @@ function switchWidth() {
     $(currentTab).find(".tabData").show();
   } else {
     $("#tabs .data").hide();
-    $(".Tlinks").closest(".tablinks").find("li").removeClass("active");
+    $(".Tlinks").closest(".tablinks").find("li").removeClass("active").attr("aria-selected", "false");
     var sid = $(currentTab).attr("sid");
-    $("#" + sid).addClass("active");
+    $("#" + sid).addClass("active").attr("aria-selected", "true");
     $("#tabs " + currentTab).show();
   }
 }
@@ -29,8 +29,8 @@ $(document).on("click", ".data .heading", function (e) {
 });
 
 $(document).on("click", ".Tlinks", function () {
-  $(this).closest(".tablinks").find("li").removeClass("active");
-  $(this).addClass("active");
+  $(this).closest(".tablinks").find("li").removeClass("active").attr("aria-selected", "false");
+  $(this).addClass("active").attr("aria-selected", "true");
   var tabID = $(this).attr("id");
   $("#tabs .data").hide();
   $('div[sid="' + tabID + '"]').fadeIn();

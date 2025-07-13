@@ -11,6 +11,10 @@
     /* 32px */
 }
 
+.visually-hidden {
+    display: none;
+}
+
 html {
     font-size: var(--base-font-size);
 }
