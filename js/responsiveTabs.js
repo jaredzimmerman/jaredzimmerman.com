@@ -7,7 +7,7 @@ function switchWidth() {
   if (windowWidth <= 767) {
     document.querySelectorAll('.tabContents .tabData').forEach(el => el.style.display = 'none');
     document.querySelectorAll('.tabContents .data .heading').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('#tabs .data').forEach(el => el.style.display = '');
+    document.querySelectorAll('#tabs .data').forEach(el => el.style.display = 'block');
     const heading = current.querySelector('.heading');
     const data = current.querySelector('.tabData');
     if (heading) heading.classList.add('active');
@@ -25,7 +25,7 @@ function switchWidth() {
       link.setAttribute('aria-selected', 'true');
     }
     const section = document.querySelector(`#tabs ${currentTab}`);
-    if (section) section.style.display = '';
+    if (section) section.style.display = 'block';
   }
 }
 
@@ -58,7 +58,7 @@ document.addEventListener('click', function (e) {
     });
     const section = document.querySelector(`section[sid="${tabID}"]`);
     if (section) {
-      section.style.display = '';
+      section.style.display = 'block';
       currentTab = '#' + section.id;
     }
     document.querySelectorAll('.tabContents .tabData').forEach(el => el.style.display = '');
