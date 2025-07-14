@@ -1,5 +1,26 @@
 let currentTab = "#about";
 
+function fadeIn(el, duration = 500) {
+  if (!el) return;
+  el.style.display = 'block';
+  el.classList.add('fade-in');
+  setTimeout(() => {
+    el.classList.remove('fade-in');
+  }, duration);
+}
+
+function fadeOut(el, duration = 250) {
+  return new Promise(resolve => {
+    if (!el) { resolve(); return; }
+    el.classList.add('fade-out');
+    setTimeout(() => {
+      el.style.display = 'none';
+      el.classList.remove('fade-out');
+      resolve();
+    }, duration);
+  });
+}
+
 function switchWidth() {
   const windowWidth = window.innerWidth;
   const current = document.querySelector(currentTab);
@@ -34,14 +55,21 @@ document.addEventListener('click', function (e) {
     const heading = e.target.closest('.data .heading');
     e.preventDefault();
     if (!heading.classList.contains('active')) {
-      currentTab = '#' + heading.closest('.data').id;
-      const current = document.querySelector(currentTab);
-      document.querySelectorAll('.tabContents .tabData').forEach(el => el.style.display = 'none');
+      const newSection = heading.closest('.data');
+      const newData = newSection.querySelector('.tabData');
+      const oldSection = document.querySelector(currentTab);
+      const oldData = oldSection ? oldSection.querySelector('.tabData') : null;
+      currentTab = '#' + newSection.id;
       document.querySelectorAll('.tabContents .data .heading').forEach(el => el.classList.remove('active'));
-      const h = current.querySelector('.heading');
-      const d = current.querySelector('.tabData');
-      if (h) h.classList.add('active');
-      if (d) d.style.display = '';
+      document.querySelectorAll('.tabContents .tabData').forEach(el => {
+        if (el !== newData && el !== oldData) el.style.display = 'none';
+      });
+      if (oldData && oldData !== newData) {
+        fadeOut(oldData).then(() => fadeIn(newData));
+      } else {
+        fadeIn(newData);
+      }
+      if (heading) heading.classList.add('active');
     }
   } else if (e.target.closest('.Tlinks')) {
     const target = e.target.closest('.Tlinks');
@@ -53,14 +81,21 @@ document.addEventListener('click', function (e) {
     target.classList.add('active');
     target.setAttribute('aria-selected', 'true');
     const tabID = target.id;
+    const newSection = document.querySelector(`section[sid="${tabID}"]`);
+    const oldSection = document.querySelector(currentTab);
     document.querySelectorAll('#tabs .data').forEach(section => {
-      section.style.display = 'none';
+      if (section !== newSection && section !== oldSection) {
+        section.style.display = 'none';
+      }
     });
-    const section = document.querySelector(`section[sid="${tabID}"]`);
-    if (section) {
-      section.style.display = 'block';
-      currentTab = '#' + section.id;
+    if (oldSection && oldSection !== newSection) {
+      fadeOut(oldSection).then(() => {
+        if (newSection) fadeIn(newSection);
+      });
+    } else if (newSection) {
+      fadeIn(newSection);
     }
+    if (newSection) currentTab = '#' + newSection.id;
     document.querySelectorAll('.tabContents .tabData').forEach(el => el.style.display = '');
   }
 });
