@@ -84,8 +84,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.mainWrapper .RightCol .tabContents .container .data,
-.mainWrapper .RightCol .tabContents .container .heading {
+.js .mainWrapper .RightCol .tabContents .container .data,
+.js .mainWrapper .RightCol .tabContents .container .heading {
   display: none;
 }
 

@@ -74,6 +74,7 @@ function debounce(func, wait) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  document.documentElement.classList.add('js');
   switchWidth();
   document.querySelectorAll('.fade').forEach(el => el.classList.add('visible'));
   const linkLocation = window.location.hash;
