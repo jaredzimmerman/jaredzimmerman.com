@@ -43,7 +43,7 @@
     
 
 	<!--Robots & Googlebot -->
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; object-src 'none';">
 	<meta content="index, follow" name="googlebot">
 	<meta content="always" name="referrer">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -104,12 +104,12 @@
                                 </div>
                         </header>
                         <div class="RightCol">
-                                <nav class="tabs" role="tablist">
-                                        <ul class="tablinks">
+                                <nav class="tabs">
+                                        <ul class="tablinks" role="tablist">
                                                 <li class=" active Tlinks" data-tabindex="about" id="l1" role="tab" aria-controls="about" aria-selected="true">
                                                         <span class="topBorder"></span>
-                                                        <h4 class="visually-hidden"><span class="topBorder">About</span>
-                                                        </h4>
+                                                        <h2 class="visually-hidden"><span class="topBorder">About</span>
+                                                        </h2>
                                                         <a href="#about">About</a>
                                                 </li>
 
@@ -117,8 +117,8 @@
                                                 <li class="Tlinks" data-tabindex="clients" id="l2" role="tab" aria-controls="clients" aria-selected="false">
 							<span class="topBorder"></span>
 
-                                                        <h4 class="visually-hidden"><span class="topBorder">Clients</span>
-                                                        </h4>
+                                                        <h2 class="visually-hidden"><span class="topBorder">Clients</span>
+                                                        </h2>
 							<a href="#clients">Clients</a>
 						</li>
 
@@ -126,8 +126,8 @@
                                                 <li class="Tlinks" data-tabindex="contact" id="l3" role="tab" aria-controls="contact" aria-selected="false">
 							<span class="topBorder"></span>
 
-                                                        <h4 class="visually-hidden"><span class="topBorder">Contact</span>
-                                                        </h4>
+                                                        <h2 class="visually-hidden"><span class="topBorder">Contact</span>
+                                                        </h2>
 							<a href="#contact">Contact</a>
 						</li>
 
@@ -135,8 +135,8 @@
                                                 <li class="Tlinks" data-tabindex="elsewhere" id="l4" role="tab" aria-controls="elsewhere" aria-selected="false">
 							<span class="topBorder"></span>
 
-                                                        <h4 class="visually-hidden"><span class="topBorder">Elsewhere</span>
-                                                        </h4>
+                                                        <h2 class="visually-hidden"><span class="topBorder">Elsewhere</span>
+                                                        </h2>
                                                 <a href="#elsewhere">Elsewhere</a>
 						</li>
                                         </ul>
@@ -149,7 +149,7 @@
 							<div class="heading active">
 								<span class="topBorder"></span>
 
-								<h4 id="aboutHeading">About</h4>
+								<h2 id="aboutHeading">About</h2>
 							</div>
 
 
@@ -186,7 +186,7 @@
 							<div class="heading">
 								<span class="topBorder"></span>
 
-								<h4 id="clientsHeading">Clients</h4>
+								<h2 id="clientsHeading">Clients</h2>
 							</div>
 
 
@@ -314,7 +314,7 @@
 							<div class="heading">
 								<span class="topBorder"></span>
 
-								<h4 id="contactHeading">Contact</h4>
+								<h2 id="contactHeading">Contact</h2>
 							</div>
 
 
@@ -348,7 +348,7 @@
 							<div class="heading">
 								<span class="topBorder"></span>
 
-								<h4 id="elsewhereHeading">Elsewhere</h4>
+								<h2 id="elsewhereHeading">Elsewhere</h2>
 							</div>
 
 
